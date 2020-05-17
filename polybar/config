@@ -45,7 +45,7 @@ font-4 = "darksouls:style=Regular:size=22;7"
 
 modules-left = powermenu  battery i3
 modules-center = xwindow
-modules-right = filesystem pulseaudio memory cpu network eth temperature date
+modules-right = filesystem pulseaudio memory cpu network temperature date
 
 tray-position = right
 tray-padding = 2

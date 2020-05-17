@@ -4,7 +4,7 @@
  
 IMAGE=/tmp/lock.png
 TEXT=/tmp/text.png
-ICON=/home/$USER/.config/i3/lock.png
+ICON=$1
 rm $IMAGE 
 scrot $IMAGE
 convert $IMAGE -scale 10% -scale 1000% -fill black -colorize 25% $IMAGE
