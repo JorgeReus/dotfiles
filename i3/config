@@ -33,9 +33,9 @@ set $right semicolon
 exec_always xinput set-prop 12 290 1
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id /home/$USER/.config/i3/volume_controller.sh up 5
-bindsym XF86AudioLowerVolume exec --no-startup-id /home/$USER/.config/i3/volume_controller.sh down 5
-bindsym XF86AudioMute exec --no-startup-id /home/$USER/.config/i3/volume_controller.sh toggle-mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/$USER/.config/i3/scripts/volume_controller.sh up 5
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/$USER/.config/i3/scripts/volume_controller.sh down 5
+bindsym XF86AudioMute exec --no-startup-id /home/$USER/.config/i3/scripts/volume_controller.sh toggle-mute
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec bash /home/$USER/.config/i3/scripts/brightness/xbrightnessUp.bash
