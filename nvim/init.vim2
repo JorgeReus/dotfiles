@@ -1,0 +1,18 @@
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'neovim/nvim-lsp'
+"Plug 'Shougo/deoplete-lsp'
+Plug 'vim-airline/vim-airline'
+call plug#end()
+
+"function! CurrentLineInfo()
+lua << EOF
+local nvim_lsp = require'nvim_lsp'
+local configs = require'nvim_lsp/configs'
+nvim_lsp.terraformls.setup{}
+EOF
+
+" disable preview window
+set completeopt-=preview
+
+" use omni completion provided by lsp
+"set omnifunc=lsp#omnifunc

@@ -1,0 +1,99 @@
+/**
+ * rofi -dump-theme output.
+ * Rofi version: 1.5.1
+ **/
+* {
+    red:              rgba ( 205, 92, 92, 100 % );
+    lightgreen:       rgba ( 136, 204, 34, 100 % );
+    green:            rgba ( 134, 175, 128, 100 % );
+    background-color: rgba (0, 0, 0, 0%);
+    lightred:         rgba ( 204, 85, 51, 100 % );
+    blue:             rgba ( 100, 149, 237, 100 % );
+    lightmagenta:     rgba ( 153, 102, 0, 100 % );
+    dark:             rgba ( 28, 28, 28, 100 % );
+    lightblack:       rgba ( 85, 68, 68, 100 % );
+    lightblue:        rgba ( 135, 206, 235, 100 % );
+    black:            rgba ( 61, 53, 42, 100 % );
+    lightwhite:       rgba ( 221, 204, 187, 100 % );
+    cyan:             rgba ( 176, 196, 222, 100 % );
+    magenta:          rgba ( 222, 184, 135, 100 % );
+    lightyellow:      rgba ( 255, 167, 93, 100 % );
+    text-color:       rgba ( 255, 238, 221, 100 % );
+    white:            rgba ( 187, 170, 153, 100 % );
+    yellow:           rgba ( 232, 174, 91, 100 % );
+    lightcyan:        rgba ( 176, 196, 222, 100 % );
+    dark-blue:        rgba (21, 35, 45, 100% );
+    blue:             rgba (25, 53, 73, 100% );
+    highlight:        bold rgba ( 255, 255, 255, 100 % );
+}
+window {
+    fullscreen:  true;
+    orientation: horizontal;
+    location:    west;
+    anchor:      west;
+    text-color:  @lightwhite;
+    children:    [ mainbox,dummy ];
+    border:      0px 2px 0px 0px ;
+}
+dummy {
+    expand: true;
+}
+sidebar {
+    padding:          10px ;
+    background-color: @blue;
+    border:           2px 0px 0px ;
+}
+button selected {
+    border-color: @lightgreen;
+    text-color:   @lightgreen;
+}
+entry {
+    width: 20.0000em ;
+}
+inputbar {
+    padding:          4px ;
+    background-color: @lightmagenta;
+    children:         [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    text-color:       @lightgreen;
+    border:           5px 5px 5px 5px;
+    color:            @green;
+}
+mainbox {
+    background-color: @blue;
+    expand:           false;
+    spacing:          1.0000em ;
+}
+listview {
+    padding: 0.0000em 0.4000em 0.0000em 1.0000em ;
+    dynamic: false;
+    lines:   0;
+}
+element selected.normal {
+    background-color: @green;
+}
+element selected.active {
+    background-color: @lightblue;
+    text-color:       @dark;
+}
+element selected.urgent {
+    background-color: @lightred;
+    text-color:       @dark;
+}
+element normal.active {
+    text-color: @lightblue;
+}
+element normal.urgent {
+    text-color: @lightred;
+}
+element alternate.active {
+    text-color: @lightblue;
+}
+element alternate.urgent {
+    text-color: @lightred;
+}
+textbox-prompt-colon {
+    margin:     0px 0.3000em 0.0000em 0.0000em ;
+    expand:     false;
+    str:        ":";
+    text-color: @normal-foreground;
+}

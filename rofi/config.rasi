@@ -1,0 +1,6 @@
+configuration {
+  font: "Inconsolata 9";
+  theme: "/home/reus/.config/rofi/theme.rasi";
+  columns: 2;
+  sort: true;
+}

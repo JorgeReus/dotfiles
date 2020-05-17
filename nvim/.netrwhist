@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/reus/.config/nvim'
+let g:netrw_dirhist_6='/home/reus/HDD/cof_academy/async_uservices/quart/src/repository/DAO'
+let g:netrw_dirhist_5='/home/reus/HDD/cof_academy/async_uservices/sqlite'
+let g:netrw_dirhist_4='/home/reus/.IntelliJIdea2019.3'
+let g:netrw_dirhist_3='/home/reus/HDD/cof_academy/async_uservices'
+let g:netrw_dirhist_2='/home/reus/HDD/globant/sdc-sp-python-poc/consul'
+let g:netrw_dirhist_1='/home/reus/HDD/globant/sdc-sp-python-poc/redis'

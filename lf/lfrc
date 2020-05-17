@@ -1,0 +1,93 @@
+# interpreter for shell commands (needs to be POSIX compatible)
+set preview true
+set previewer ~/.config/lf/previewer.sh
+set color256 true
+set drawbox true
+set icons true
+set ignorecase true
+
+# Custom Functions
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        video/*|image/*/application/pdf) xdg-open "$f" & disown;;
+        *) xdg-open "$f" ;;
+    esac
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+}}
+
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+
+cmd delete ${{
+    set -f
+    printf "delete?[y/n] "
+    read ans
+    [ $ans = "y" ] && rm -rf $fx
+}}
+
+
+# Bindings
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+
+#Trash mappings
+map dd delete
+map tc clear_trash
+map tr restore_trash
+
+# Basic Functions
+map <c-q> quit
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map <enter> open
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ms $mkscript
+map ch chmod
+map bg setwallpaper
+map o open_config
+map r rename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+map sa glob-select *
