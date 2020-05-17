@@ -23,6 +23,7 @@ nnoremap <silent> ;i <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> ;s <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> ;td <cmd>lua vim.lsp.buf.type_definition()<CR>
 "### LSP ###
+let g:coc_node_path = '/home/$USER/.nvm/versions/node/v12.9.0/bin/node'
 set statusline^=%{coc#status()}
 :lua << EOF
     local nvim_lsp = require 'nvim_lsp'
