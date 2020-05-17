@@ -3,7 +3,6 @@ Plug 'neovim/nvim-lsp'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdcommenter'
@@ -72,40 +71,24 @@ set softtabstop=2
 set shiftwidth=2
 set number
 set relativenumber
-" set list listchars=tab:>\ ,trail:»,eol:¬
 
 let g:UltiSnipsExpandTrigger="<A-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
-" ### Deoplete ###
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#enable_ignore_case = 1
-" let g:neoformat_basic_format_align = 1
-"
-" Enable tab to spaces conversion
-" let g:neoformat_basic_format_retab = 1
-"
-" Enable trimmming of trailing whitespace
-" let g:neoformat_basic_format_trim = 1
-"
-" disable autocompletion, cause we use deoplete for completion
-" let g:jedi#completions_enabled = 0
-"
-" open the go-to function in split, not another buffer
-" let g:jedi#use_splits_not_buffers = "right"
 
 " ### Colors
 set termguicolors
 colorscheme cobalt2
 let g:airline_theme='cool'
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
+highlight NonText         guibg=NONE
+highlight Normal          guibg=None
+highlight SignColumn      guibg=None
+highlight LineNr          guibg=None
 highlight Comment         guifg=#6699CC
 highlight String          guifg=#99c8e8
 highlight CursorLineNr    guifg=#ff00ff
-highlight LineNr          guifg=#00ffff
 highlight Type            guifg=#cce899
 highlight Identifier      guifg=#cee904
 highlight GitGutterAdd    guifg=#009901
