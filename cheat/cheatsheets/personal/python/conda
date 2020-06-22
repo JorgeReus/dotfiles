@@ -1,0 +1,5 @@
+# Create env
+conda create --name kafka python=3.8
+
+# List envs
+conda env list

@@ -1,0 +1,39 @@
+# https://blog.kubernauts.io/k3s-with-k3d-and-metallb-on-mac-923a3255c36e
+
+# install k3d on linux
+wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | bash
+
+# Create a cluster with 3 workers
+k3d create --workers 3
+
+# Get kubeconfig from default cluster
+export KUBECONFIG="$(k3d get-kubeconfig --name='k3s-default')"
+
+# Verify cluster
+k3d list
+kubectl get nodes
+
+# If a node is not ready restart it's docker container
+docker container restart k3d-k3s-default-worker-x
+
+# deploy metallb
+git clone https://github.com/arashkaffamanesh/k3d-k3s-metallb.git
+cd k3d-k3s-metallb
+kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.8.3/manifests/metallb.yaml
+
+# Get the ip of traefik
+kubectl get svc -n kube-system | grep traefik | awk '{ print $4 }'
+
+
+# Based of the subnet of the ip of traefik adapt the configmap for metallb
+nvim metal-lb-layer2-config.yaml
+kubectl create -f metal-lb-layer2-config.yaml
+
+# Verify a 404 on traefik ip
+curl $(kubectl get svc -n kube-system | grep traefik | awk '{ print $4 }')
+
+# Install ingress  and rememeber to enable --enable-ssl-passthrough in the deployment
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+
+# Verify instalation checking the external ip in the controller
+kubectl -n ingress-nginx get svc

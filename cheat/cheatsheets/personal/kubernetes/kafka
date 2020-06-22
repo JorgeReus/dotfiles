@@ -1,0 +1,75 @@
+# Create a namespace
+kubectl create namespace kafka
+
+# Apply all resources
+kubectl apply -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
+
+# Create a 3 node cluster
+cat <<EOF | kubectl apply -n kafka -f -
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: my-cluster
+spec:
+  kafka:
+    version: 2.5.0
+    replicas: 3
+    config:
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      log.message.format.version: "2.5"
+    storage:
+      type: jbod
+      volumes:
+      - id: 0
+        type: persistent-claim
+        size: 10Gi
+        deleteClaim: false
+    listeners:
+      plain: {}
+      tls: {}
+      external:
+        type: ingress
+        class: nginx
+        configuration:
+          bootstrap:
+            host: bootstrap.dev
+          brokers:
+          - broker: 0
+            host: broker-0.dev
+          - broker: 1
+            host: broker-1.dev
+          - broker: 2
+            host: broker-2.dev
+  zookeeper:
+    replicas: 3
+    storage:
+      type: persistent-claim
+      size: 10Gi
+      deleteClaim: false
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+EOF
+
+# Wait for the zookeeper, kafka and controllers to be ready
+kubectl get pods -n kafka -w
+
+# write messages to  a topic inside the cluster
+kubectl -n kafka run kafka-producer -ti --image=strimzi/kafka:0.18.0-kafka-2.5.0 --rm=true --restart=Never -- bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic
+
+# read messages from topic inside the cluster
+kubectl -n kafka run kafka-consumer -ti --image=strimzi/kafka:0.18.0-kafka-2.5.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic --from-beginning
+
+# get the certificate for the kafka cluster
+kubectl get secret -n kafka my-cluster-cluster-ca-cert -o jsonpath='{.data.ca\.crt}' | base64 -d > ca.crt
+
+# Generate a java keytool for the cert
+keytool -import -trustcacerts -alias root -file ca.crt -keystore truststore.jks -storepass password -noprompt
+
+# Write to topic from outside the cluster
+./kafka-console-producer.sh --broker-list bootstrap.dev:443 --producer-property security.protocol=SSL --producer-property ssl.truststore.password=password --producer-property ssl.truststore.location=../../truststore.jks --topic my-topic
+
+# Read messages from outside the cluster
+./kafka-console-consumer.sh --bootstrap-server bootstrap.dev:443 --consumer-property security.protocol=SSL --consumer-property ssl.truststore.password=password --consumer-property ssl.truststore.location=../../truststore.jks --topic my-topic --from-beginning
