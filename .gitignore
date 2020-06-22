@@ -1,3 +1,7 @@
+helm/
+k3d/
+nvim/.netrwhist
+Android Open Source Project/
 autostart/
 bleachbit/
 BraveSoftware/

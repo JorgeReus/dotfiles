@@ -11,6 +11,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'herrbischoff/cobalt2.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 " LSP configs
@@ -216,7 +217,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
@@ -275,3 +275,8 @@ au! BufNewFile,BufRead *.svelte set ft=html
 
 " Clipboard
 set clipboard+=unnamedplus
+
+" Dart 
+let dart_html_in_string=v:true
+let g:dart_format_on_save = 1
+let g:dart_style_guide = 2

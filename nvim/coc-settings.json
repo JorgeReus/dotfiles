@@ -1,4 +1,5 @@
 {
+  "npm.binPath": "~/.nvm/versions/node/v12.9.0/bin/npm",
   "python.jediEnabled": false,
    "languageserver": {
     "terraform": {
@@ -6,5 +7,8 @@
       "filetypes": ["terraform", "tf"],
       "initializationOptions": {}
     }
-  }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "dart"
+  ]
 }

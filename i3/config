@@ -14,6 +14,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 font pango:DejaVu Sans Mono, Awesome 10
 
 for_window [class="^.*"] border pixel 0
+for_window [title="Android Emulator - flutter_emulator:5554"] floating enable;
+
 
 smart_gaps on
 #new_window pixel 0
@@ -46,7 +48,6 @@ floating_modifier Mod4
 
 # start a terminal
 bindsym Mod4+Return exec alacritty
-bindsym Ctrl+e exec alacritty -e ranger
 
 # kill focused window
 bindsym Mod4+Shift+q kill
