@@ -1,0 +1,21 @@
+background_opacity: 0.80
+
+font:
+  size: 12
+  normal: 
+    family: Inconsolata Nerd Font Mono
+    style: Regular
+
+  bold: 
+    family: Inconsolata Nerd Font Mono
+    style: Bold
+
+
+  italic: 
+    family: Inconsolata Nerd Font Mono
+    style: Italic
+
+
+  bold_italic: 
+    family: Inconsolata Nerd Font Mono
+    style: Bold Italic

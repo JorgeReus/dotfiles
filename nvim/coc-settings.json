@@ -1,0 +1,31 @@
+{
+  "npm.binPath": "~/.asdf/shims/npm",
+  "tsserver.npm": "~/.asdf/shims.npm",
+  "python.jediEnabled": false,
+   "languageserver": {
+    "terraform": {
+      "command": "/usr/bin/terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["tf", "terraform"],
+      "initializationOptions": {},
+      "settings": {}
+    },
+    "golang": {
+      "command": "~/go/bin/gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/"],
+      "filetypes": ["go"]
+    }
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "dart"
+  ],
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "l": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  },
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "svelte.enable-ts-plugin": true
+}

@@ -1,0 +1,5 @@
+cheatpaths:
+  - name: personal
+    path: /home/reus/cheats
+    tags: [ personal ]
+    readonly: false

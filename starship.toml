@@ -1,0 +1,66 @@
+add_newline = false
+format = """
+$directory
+$username\
+$hostname\
+$shlvl\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$docker_context\
+$dart\
+$deno\
+$golang\
+$helm\
+$java\
+$nodejs\
+$python\
+$rust\
+$kubernetes\
+$terraform\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$custom\
+$cmd_duration\
+$line_break\
+$lua\
+$jobs\
+$status\
+$shell\
+$character"""
+
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➤](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[➤](bold red)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+[python]
+symbol = "\uE606"
+
+[conda]
+format = "[$symbol$environment](dimmed green) "
+ignore_base = true
+
+[terraform]
+symbol = "\ufa08"
+
+[kubernetes]
+format = '[$symbol$context \($namespace\)](cyan) '
+disabled = false
+[kubernetes.context_aliases]
+"arn:aws:eks:.*:cluster/(?P<var_cluster>.+)" = "eks/$var_cluster"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+
+[rust]
+disabled = false
