@@ -104,11 +104,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -263,6 +259,11 @@ let g:dart_style_guide = 2
 nmap <space>e :CocCommand explorer<CR>
 nnoremap <silent> <leader>+ :exe "vertical resize +10"<CR>
 nnoremap <silent> <leader>- :exe "vertical resize -10"<CR>
+
+augroup tf_ft
+  au!
+  autocmd BufNewFile,BufRead *.tf   set syntax=tf
+augroup END
 
 
 " Moving text
