@@ -7,7 +7,7 @@ vim.g['NERDCompactSexyComs'] = 1
 --Align line-wise comment delimiters flush left instead of following code indentation
 vim.g['NERDDefaultAlign'] = 'left'
 --Add your own custom formats or override the defaults
-vim.g['NERDCustomDelimiters'] = { hcl= { left = '#'  } }
+vim.g['NERDCustomDelimiters'] = { terraform= { left = '#'  } }
 --Allow commenting and inverting empty lines (useful when commenting a region)
 vim.g['NERDCommentEmptyLines'] = 1
 --Enable trimming of trailing whitespace when uncommenting
