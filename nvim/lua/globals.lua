@@ -13,9 +13,11 @@ vim.o.clipboard = "unnamedplus"
 vim.g['mapleader'] = 'ñ'
 
 -- Global mappings
-vim.api.nvim_set_keymap("n", "<C-s>", ":w<Cr>", { })
-vim.api.nvim_set_keymap("n", "<C-q>", ":q!<Cr>", { })
-vim.api.nvim_set_keymap("", "-", ':call nerdcommenter#Comment(0, "toggle")<CR>', { noremap = true })
-vim.api.nvim_set_keymap("", "-", ':call nerdcommenter#Comment(0, "toggle")<CR>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-Left>", ":tabprevious<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-Right>", ":tabnext<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-s>", ":w<Cr>", {})
+vim.api.nvim_set_keymap("n", "<C-q>", ":q!<Cr>", {})
+vim.api.nvim_set_keymap("", "-", ':call nerdcommenter#Comment(0, "toggle")<CR>',
+                        {noremap = true})
+vim.api.nvim_set_keymap("", "-", ':call nerdcommenter#Comment(0, "toggle")<CR>',
+                        {noremap = true})
+vim.api.nvim_set_keymap("n", "<C-Left>", ":tabprevious<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<C-Right>", ":tabnext<CR>", {noremap = true})
