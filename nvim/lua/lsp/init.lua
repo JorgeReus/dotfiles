@@ -23,6 +23,16 @@ require('lspconfig')['gopls'].setup {
     capabilities = capabilities
 }
 
+require('lspconfig')['tsserver'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+require('lspconfig')['svelte'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
 local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
 
 for type, icon in pairs(signs) do
