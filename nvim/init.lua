@@ -14,8 +14,10 @@ require('packer').startup(function()
     use 'morhetz/gruvbox'
     use 'lunarvim/darkplus.nvim'
     -- Commenter
-    use 'scrooloose/nerdcommenter'
+    use 'numToStr/Comment.nvim'
+    -- Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
+    use 'nvim-treesitter/playground'
 end)
 
 require('globals')

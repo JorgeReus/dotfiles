@@ -407,5 +407,4 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-exec_always --no-startup-id "setxkbmap -layout us,latam"
-exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+exec_always --no-startup-id "setxkbmap -layout us,latam -option 'grp:alt_shift_toggle'"

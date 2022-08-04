@@ -1,7 +1,10 @@
-require('syntax.nerdcommenter')
+require('syntax.commenter')
 
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"hcl"},
+    ensure_installed = {
+        "hcl", "svelte", "go", "javascript", "typescript", "bash", "graphql",
+        "java", "json", "lua", "python", "rust", "tsx"
+    },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -9,11 +12,7 @@ require'nvim-treesitter.configs'.setup {
     -- Automatically install missing parsers when entering buffer
     auto_install = true,
 
-    -- List of parsers to ignore installing (for "all")
-    ignore_install = {"javascript"},
-
     highlight = {
-        -- `false` will disable the whole extension
         enable = true,
 
         -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
