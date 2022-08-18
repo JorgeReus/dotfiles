@@ -1,48 +1,39 @@
--- Auto format go files when saved
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = vim.api.nvim_create_augroup("format_go", {clear = true}),
-    pattern = "*.go",
-    callback = function()
-        vim.fn.jobstart({"gofmt", "-w", vim.fn.expand('%:p')}, {
-            on_exit = function(job_id, exit_code, _)
-                if exit_code == 0 then
-                    print("Formatted " .. vim.fn.expand('%:p'))
-                    vim.cmd("e")
-                end
-            end
+local null_ls = require("null-ls")
+local formatting = null_ls.builtins.formatting
+local sources = {
+	formatting.stylua,
+  formatting.terrafmt,
+  formatting.prettier,
+  formatting.golines,
+  formatting.jq,
+  formatting.rustfmt
+}
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
+end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+-- add to your shared on_attach callback
+local on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                lsp_formatting(bufnr)
+            end,
         })
     end
-})
+end
 
--- Autoformat terraform files when saved
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = vim.api.nvim_create_augroup("format_tf", {clear = true}),
-    pattern = "*.tf,*.tfvars",
-    callback = function()
-        vim.fn.jobstart({"terraform", "fmt", vim.fn.expand('%:p')}, {
-            on_exit = function(job_id, exit_code, _)
-                if exit_code == 0 then
-                    print("Formatted " .. vim.fn.expand('%:p'))
-                    vim.cmd("e")
-                end
-            end
-        })
-    end
+null_ls.setup({
+	sources = sources,
+	on_attach = on_attach
 })
-
--- Autoformat lua files when saved
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = vim.api.nvim_create_augroup("format_lua", {clear = true}),
-    pattern = "*.lua",
-    callback = function()
-        vim.fn.jobstart({'lua-format', '-i', vim.fn.expand('%:p')}, {
-            on_exit = function(job_id, exit_code, _)
-                if exit_code == 0 then
-                    print("Formatted " .. vim.fn.expand('%:p'))
-                    vim.cmd("e")
-                end
-            end
-        })
-    end
-})
-

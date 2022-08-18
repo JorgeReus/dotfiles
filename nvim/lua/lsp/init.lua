@@ -33,6 +33,18 @@ require('lspconfig')['svelte'].setup {
     capabilities = capabilities
 }
 
+require('lspconfig')['rust_analyzer'].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {granularity = {group = "module"}, prefix = "self"},
+            cargo = {buildScripts = {enable = true}},
+            procMacro = {enable = true}
+        }
+    }
+}
+
 local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
 
 for type, icon in pairs(signs) do

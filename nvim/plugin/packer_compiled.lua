@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/reus/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
     url = "https://github.com/onsails/lspkind.nvim"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/reus/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/reus/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -148,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/reus/.local/share/nvim/site/pack/packer/start/playground",
     url = "https://github.com/nvim-treesitter/playground"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/reus/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   }
 }
 

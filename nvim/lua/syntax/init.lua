@@ -3,7 +3,7 @@ require('syntax.commenter')
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         "hcl", "svelte", "go", "javascript", "typescript", "bash", "graphql",
-        "java", "json", "lua", "python", "rust", "tsx"
+        "java", "json", "lua", "python", "rust", "tsx", "css"
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
