@@ -1,0 +1,13 @@
+output DP-1
+off
+output HDMI-1-1
+off
+output eDP-1-1
+off
+output DP-0
+crtc 0
+mode 3840x1080
+pos 0x0
+primary
+rate 59.97
+x-prop-non_desktop 0

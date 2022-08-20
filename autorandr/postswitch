@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Available vars when called by autorandr
+# AUTORANDR_CURRENT_PROFILE (e.g. default)
+# AUTORANDR_CURRENT_PROFILES (Empty in most cases)
+# AUTORANDR_PROFILE_FOLDER (e.g. $HOME/.config/autorandr/default)
+# AUTORANDR_MONITORS (e.g. eDP-1-1)
+
+# If it's not triggered by autorandr, default to the default profile (Useful when manual change)
+if [ -z $AUTORANDR_CURRENT_PROFILE ]; then AUTORANDR_CURRENT_PROFILE=default; fi
+i3-msg restart && notify-send -u normal "Monitor Layout Changed" "Swtiched to $AUTORANDR_CURRENT_PROFILE"
