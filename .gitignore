@@ -63,3 +63,11 @@ xarchiver/
 xfce4/
 nvim/.netrwhist
 Optimus\ Manager/
+*.desktop
+gops/
+nvim/plugin/packer_compiled.lua
+discordcanary/
+lxsession/
+aws-sso-creds.toml
+ngrok/
+obsidian/

@@ -10,6 +10,7 @@ configuration {
 
 * {
   blue: #6272a4;
+  purple: #A020F0;
     selected-normal-foreground:  rgba ( 250, 251, 252, 100 % );
     foreground:                  rgba ( 250, 251, 252, 100 % );
     normal-foreground:           @foreground;
@@ -93,7 +94,7 @@ configuration {
 
 #window {
   transparency: "real";
-  background-color: @bg;
+  background-color: @background;
 }
 
 #prompt {
