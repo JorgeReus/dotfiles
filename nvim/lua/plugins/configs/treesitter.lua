@@ -9,7 +9,7 @@ require("base46").load_highlight "treesitter"
 local options = {
   ensure_installed = {
       "hcl", "svelte", "go", "javascript", "typescript", "bash", "graphql",
-      "java", "json", "lua", "python", "rust", "tsx", "css"
+      "java", "json", "lua", "python", "rust", "tsx", "css", "terraform"
   },
 
   highlight = {

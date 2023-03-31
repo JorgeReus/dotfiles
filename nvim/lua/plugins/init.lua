@@ -227,6 +227,10 @@ local plugins = {
     after = "nvim-dap"
   },
 
+  ["iamcco/markdown-preview.nvim"] = {
+    run = function() vim.fn["mkdp#util#install"]() end,
+  },
+
 }
 
 -- Load all plugins
